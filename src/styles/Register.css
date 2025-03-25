@@ -1,0 +1,102 @@
+/* Register Specific Styles */
+.registerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+    padding: 2rem;
+}
+
+.registerForm {
+    width: 100%;
+    max-width: 420px;
+    padding: 2.5rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    border-top: 4px solid #ff6b6b;
+}
+
+.registerForm h2 {
+    color: #ff6b6b;
+    margin-bottom: 1.8rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.registerForm input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.registerForm input:focus {
+    border-color: #ff6b6b;
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+}
+
+.registerForm button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.registerForm button:hover {
+    background-color: #ff5252;
+    transform: translateY(-2px);
+}
+
+.registerFooter {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.registerFooter a {
+    color: #ff6b6b;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Password Strength Meter */
+.passwordStrength {
+    height: 4px;
+    background: #eee;
+    margin-bottom: 1.2rem;
+    border-radius: 2px;
+}
+
+.error-message {
+    color: #ff6b6b;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+    .registerForm {
+        padding: 1.8rem;
+    }
+    
+    .registerForm h2 {
+        font-size: 1.4rem;
+    }
+    
+    .registerForm button:hover {
+        transform: none;
+    }
+}

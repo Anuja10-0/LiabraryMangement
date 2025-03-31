@@ -52,20 +52,19 @@
 /* Card Design */
 .book-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
-  /* More specific transitions */
+  border: 1px solid rgba(110, 69, 226, 0.1); /* Added subtle border */
+  border-radius: 12px; /* Added border radius */
+  overflow: hidden; /* Ensures border radius works with child elements */
+  background: white; /* Ensures background is consistent */
 }
 
 .book-card.hovered {
   transform: translateY(-6px) scale(1.02);
-  /* Reduced translateY from -10px to -6px */
   box-shadow:
     0 15px 30px rgba(110, 69, 226, 0.25),
-    /* Reduced shadow intensity */
     0 8px 15px rgba(136, 211, 206, 0.15);
-  border: 1px solid rgba(110, 69, 226, 0.3);
-  /* Thinner border */
+  border: 1px solid rgba(110, 69, 226, 0.3); /* Slightly more visible border on hover */
 }
-
 .book-card.hovered::before {
   transition: opacity 0.3s ease;
   /* Specific transition for opacity */

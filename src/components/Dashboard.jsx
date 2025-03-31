@@ -83,8 +83,81 @@ const books = [
     description: "An easy way to build good habits and break bad ones",
     category: "Self-Help",
     pdfUrl: "https://drive.google.com/file/d/1NGzlrZl3BAhW4BBUW-mCmKUynA2bEQjx/view?usp=sharing"
-  }
+  },
+  {
+    id: 10,
+    title: "Hypnotherapy",
+    author: "Dave Elman",
+    cover: "/covers/10-hypnotherapy.jpg",
+    description: "A guide to hypnotherapy techniques and practices",
+    category: "Psychology",
+    pdfUrl: "https://drive.google.com/file/d/1E6bI850GdJzUkFHzGN2PI9fSnFefvzyQ/view?usp=drive_link"
+  },
+  {
+    id: 11,
+    title: "Hypnosis and Hypnotherapy",
+    author: "Calvin D. Banyan and Gerald F. Kein",
+    cover: "/covers/11-hypnosis-and-hypnotherapy.jpg",
+    description: "Exploring the power of hypnosis for therapy",
+    category: "Psychology",
+    pdfUrl: "https://drive.google.com/file/d/1E0l6A1J8JtSVD1HmuIH0Ne_bRXO1yC3l/view?usp=drive_link"
+  },
+  {
+    id: 12,
+    title: "Irresistible",
+    author: "Adam Alter",
+    cover: "/covers/12-Irresistible.jpg",
+    description: "The rise of addictive technology and business of keeping us hooked",
+    category: "Technology",
+    pdfUrl: "https://drive.google.com/file/d/1EIlsHlUVEWfPvwTAo6UmI2Hh2SIgIoiK/view?usp=drive_link"
+  },
+  {
+    id: 13,
+    title: "Milk and Honey",
+    author: "Rupi Kaur",
+    cover: "/covers/13.jpg",
+    description: "A collection of poetry and prose about survival, love, and healing",
+    category: "Non-Fiction",
+    pdfUrl: "https://drive.google.com/file/d/1E4DHDshFtNZmbBeNkcye2bl0uFs0KR1U/view?usp=drive_link"
+  },
+  {
+    id: 14,
+    title: "Rosemary's Baby",
+    author: "Ira Levin",
+    cover: "/covers/14.jpg",
+    description: "A horror novel about a woman who becomes pregnant with the devil's child",
+    category: "Non-Fiction",
+    pdfUrl: "https://drive.google.com/file/d/1DvFdaDCE4vLnMcNpVO1ru10SUuvvOKrj/view?usp=drive_link"
+  },
+  {
+    id: 15,
+    title: "The 48 Laws of Power",
+    author: "Robert Greene",
+    cover: "/covers/15.jpg",
+    description: "A practical guide for anyone who wants power or wants to avoid being manipulated by it",
+    category: "Self-Help",
+    pdfUrl: "https://drive.google.com/file/d/1ECrxilojKPvQGSD8wmnXc1vClIdwmE-C/view?usp=drive_link"
+  },
+  {
+    id: 16,
+    title: "The Subtle Art of Not Giving a F*ck",
+    author: "Mark Manson",
+    cover: "/covers/16.jpg",
+    description: "A counterintuitive approach to living a good life",
+    category: "Self-Help",
+    pdfUrl: "https://drive.google.com/file/d/1DrnHvizPwQghVD0gQloKpZK5911d_he2/view?usp=drive_link"
+  },
+  {
+    id: 17,
+    title: "Your Money and Your Brain",
+    author: "Jason Zweig",
+    cover: "/covers/17.jpg",
+    description: "How the new science of neuroeconomics can help make you rich",
+    category: "Personal Finance",
+    pdfUrl: "https://drive.google.com/file/d/1EM32g5PR6Lsx0tPeX05pej4UpfLCSJJ0/view?usp=drive_link"
+  },
 ];
+
 
 const Dashboard = () => {
   const [hoveredCard, setHoveredCard] = useState(null);

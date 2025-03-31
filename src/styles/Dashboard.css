@@ -1,293 +1,360 @@
 /* Base Styles */
 :root {
-    --primary: #6e45e2;
-    --secondary: #88d3ce;
-    --dark: #1a1a2e;
-    --light: #f5f5f7;
-    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-  
-  .dashboard {
-    padding: 2rem;
-    max-width: 1800px;
-    margin: 0 auto;
-    font-family: 'Inter', -apple-system, sans-serif;
-  }
-  
-  /* Title Styling */
-  .dashboard-title {
-    text-align: center;
-    margin-bottom: 3rem;
-    position: relative;
-  }
-  
-  .title-gradient {
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-size: 3rem;
-    font-weight: 800;
-    display: inline-block;
-  }
-  
-  .title-underline {
-    display: block;
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary), var(--secondary));
-    margin: 0.5rem auto;
-    border-radius: 2px;
-  }
-  
-  /* Books Grid */
-  .books-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 1rem;
-  }
-  
-  /* Card Design */
-  .book-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    transition: var(--transition);
-    position: relative;
-    z-index: 1;
-  }
-  
-  .book-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(110, 69, 226, 0.1), rgba(136, 211, 206, 0.1));
-    z-index: -1;
-    opacity: 0;
-    transition: var(--transition);
-  }
-  
-  .book-card.hovered {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(110, 69, 226, 0.3);
-  }
-  
-  .book-card.hovered::before {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(110, 69, 226, 0.3);  }
-  
-  /* Image Container */
+  --primary: #6e45e2;
+  --secondary: #88d3ce;
+  --dark: #1a1a2e;
+  --light: #f5f5f7;
+  --transition: all 0.3s cubic-bezier(0.2, 0.8, 0.4, 1);
+  /* Changed from 0.4s to 0.3s with smoother easing */
+}
+
+.dashboard {
+  padding: 2rem;
+  max-width: 1800px;
+  margin: 0 auto;
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+/* Title Styling */
+.dashboard-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.title-gradient {
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 3rem;
+  font-weight: 800;
+  display: inline-block;
+}
+
+.title-underline {
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  margin: 0.5rem auto;
+  border-radius: 2px;
+}
+
+/* Books Grid */
+.books-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+/* Card Design */
+.book-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  border: 1px solid rgba(110, 69, 226, 0.1); /* Added subtle border */
+  border-radius: 12px; /* Added border radius */
+  overflow: hidden; /* Ensures border radius works with child elements */
+  background: white; /* Ensures background is consistent */
+}
+
+.book-card.hovered {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 15px 30px rgba(110, 69, 226, 0.25),
+    0 8px 15px rgba(136, 211, 206, 0.15);
+  border: 1px solid rgba(110, 69, 226, 0.3); /* Slightly more visible border on hover */
+}
+.book-card.hovered::before {
+  transition: opacity 0.3s ease;
+  /* Specific transition for opacity */
+  opacity: 0.8;
+  /* Reduced from 1 to 0.8 */
+}
+
+.book-card.hovered .book-image {
+  transition: transform 0.3s ease, filter 0.3s ease;
+  /* Specific transitions */
+  transform: scale(1.05);
+  /* Reduced from 1.08 to 1.05 */
+  filter: brightness(1.05) saturate(1.1);
+  /* Reduced intensity */
+}
+
+/* Image Container */
 .card-image-container {
-    height: 380px; /* Fixed height for consistency */
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .book-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Changed from 'cover' to 'contain' */
-    object-position: center top; /* Ensures top alignment */
-    transition: transform 0.3s ease;
-  }
-  
-  .book-card.hovered .book-image {
-    transform: scale(1.05);
-    object-position: center center; /* Slight adjustment on hover */
-  }
-  
-  .image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-    opacity: 0.7;
-  }
-  
-  /* Card Content */
-  .card-content {
-    padding: 1.5rem;
-    color: var(--dark);
-  }
-  
-  .category-badge {
-    display: inline-block;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-    color: white;
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-  }
-  
-  .book-title {
-    font-size: 1.4rem;
-    margin: 0.5rem 0;
-    color: var(--dark);
-    font-weight: 700;
-  }
-  
-  .book-author {
-    color: #666;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-  }
-  
-  .book-description {
-    color: #555;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 1.5rem;
-  }
-  
-  /* Read Button */
-  .read-button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 0.8rem 1.5rem;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    overflow: hidden;
-    position: relative;
-    transition: var(--transition);
-  }
-  
-  .read-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: var(--transition);
-  }
-  
-  .book-card.hovered .read-button::before {
-    left: 100%;
-  }
-  
-  .button-text {
-    z-index: 1;
-  }
-  
-  .button-icon {
-    transform: translateX(0);
-    transition: var(--transition);
-    z-index: 1;
-  }
-  
-  .book-card.hovered .button-icon {
-    transform: translateX(5px);
-  }
-  
+  height: 380px;
+  /* Fixed height for consistency */
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.book-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* Changed from 'cover' to 'contain' */
+  object-position: center top;
+  /* Ensures top alignment */
+  transition: transform 0.3s ease;
+}
+
+.book-card.hovered .book-image {
+  transform: scale(1.05);
+  object-position: center center;
+  /* Slight adjustment on hover */
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  opacity: 0.7;
+}
+
+/* Card Content */
+.card-content {
+  padding: 1.5rem;
+  color: var(--dark);
+}
+
+.category-badge {
+  display: inline-block;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.book-title {
+  font-size: 1.4rem;
+  margin: 0.5rem 0;
+  color: var(--dark);
+  font-weight: 700;
+}
+
+.book-author {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.book-description {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+/* Read Button */
+.read-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  /* Specific transitions */
+}
+
+.read-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: var(--transition);
+}
+
+.book-card.hovered .read-button::before {
+  left: 100%;
+}
+
+.button-text {
+  z-index: 1;
+}
+
+.button-icon {
+  transform: translateX(0);
+  transition: var(--transition);
+  z-index: 1;
+}
+
+.book-card.hovered .button-icon {
+  transform: translateX(5px);
+}
+
 /* Enhanced Hover Effects */
 .book-card.hovered {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 
-      0 20px 40px rgba(110, 69, 226, 0.3),
-      0 10px 20px rgba(136, 211, 206, 0.2);
-    border: 2px solid rgba(110, 69, 226, 0.4);
-  }
-  
-  .book-card.hovered::before {
-    opacity: 1;
-    background: linear-gradient(135deg, rgba(110, 69, 226, 0.2), rgba(136, 211, 206, 0.2));
-  }
-  
-  .book-card.hovered .book-image {
-    transform: scale(1.08);
-    filter: brightness(1.1) saturate(1.2);
-  }
-  
-  .book-card.hovered .read-button {
-    background: linear-gradient(45deg, #5d3ac9, #6cc9c0);
-    box-shadow: 0 5px 15px rgba(93, 58, 201, 0.4);
-  }
-  
-  .book-card.hovered .category-badge {
-    background: linear-gradient(45deg, #ff4081, #f50057);
-    transform: scale(1.05);
-  }
-  
-  /* Logout Button Styles */
-  .logout-container {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-  }
-  
-  .logout-button {
-    padding: 12px 24px;
-    background: linear-gradient(45deg, #ff4d4d, #ff1a1a);
-    color: white;
-    border: none;
-    border-radius: 25px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 2px 8px rgba(255, 77, 77, 0.3);
-  }
-  
-  .logout-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 77, 77, 0.4);
-  }
-  
-  .logout-button:active {
-    transform: translateY(1px);
-  }
-  
-  .logout-button svg {
-    width: 18px;
-    height: 18px;
-    fill: white;
-    transition: transform 0.2s ease;
-  }
-  
-  .logout-button:hover svg {
-    transform: translateX(2px);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow:
+    0 20px 40px rgba(110, 69, 226, 0.3),
+    0 10px 20px rgba(136, 211, 206, 0.2);
+  border: 2px solid rgba(110, 69, 226, 0.4);
+}
+
+.book-card.hovered::before {
+  opacity: 1;
+  background: linear-gradient(135deg, rgba(110, 69, 226, 0.2), rgba(136, 211, 206, 0.2));
+}
+
+.book-card.hovered .book-image {
+  transform: scale(1.08);
+  filter: brightness(1.1) saturate(1.2);
+}
+
+.book-card.hovered .read-button {
+  background: linear-gradient(45deg, #5d3ac9, #6cc9c0);
+  box-shadow: 0 5px 15px rgba(93, 58, 201, 0.4);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  /* Specific transitions */
+}
+
+.book-card.hovered .category-badge {
+  background: linear-gradient(45deg, #ff4081, #f50057);
+  transition: background 0.3s ease, transform 0.3s ease;
+  /* Specific transitions */
+  transform: scale(1.03);
+  /* Reduced from 1.05 to 1.03 */
+}
+
+/* Logout Button Styles */
+.logout-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.logout-button {
+  padding: 12px 24px;
+  background: linear-gradient(45deg, #ff4d4d, #ff1a1a);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(255, 77, 77, 0.3);
+}
+
+.logout-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 77, 77, 0.4);
+}
+
+.logout-button:active {
+  transform: translateY(1px);
+}
+
+.logout-button svg {
+  width: 18px;
+  height: 18px;
+  fill: white;
+  transition: transform 0.2s ease;
+}
+
+.logout-button:hover svg {
+  transform: translateX(2px);
+}
+
+/* Filter Dropdown Styles */
+.filter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.filter-label {
+  font-size: 1rem;
+  color: var(--dark);
+  font-weight: 600;
+}
+
+.category-filter {
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  border: 2px solid rgba(110, 69, 226, 0.3);
+  background-color: white;
+  color: var(--dark);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: var(--transition);
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+.category-filter:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(110, 69, 226, 0.2);
+}
+
+.category-filter:hover {
+  border-color: var(--primary);
+}
+
+/* Responsive adjustments for filter */
+@media (max-width: 768px) {
+  .filter-container {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .books-container {
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
-    
-    .title-gradient {
-      font-size: 2.2rem;
-    }
+  .filter-label {
+    font-size: 0.9rem;
   }
-  
-  @media (max-width: 480px) {
-    .dashboard {
-      padding: 1rem;
-    }
-    
-    .book-card {
-      border-radius: 12px;
-    }
+
+  .category-filter {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
   }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .books-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  .title-gradient {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard {
+    padding: 1rem;
+  }
+
+  .book-card {
+    border-radius: 12px;
+  }
+}
